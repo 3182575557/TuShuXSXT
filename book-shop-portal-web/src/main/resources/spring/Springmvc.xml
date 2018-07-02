@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- 加载属性文件 -->
+	<context:property-placeholder location="classpath:resource/*.properties" />
+	<!-- 配置注解驱动 -->
+	<mvc:annotation-driven />
+	<!-- 视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 配置包扫描器，扫描@Controller注解的类 -->
+	<context:component-scan base-package="com.bookshop.*.controller"/>
+	
+	
+	<!-- 配置资源映射 -->
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/**"></mvc:resources>
+	
+	<!-- freemaker的配置 -->
+	<!-- <bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		模板所在位置
+		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean> -->
+	
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截以order开头的所有请求 -->
+			<mvc:mapping path="/order/**"/>
+			<!-- 拦截器路径 -->
+			<bean class="com.bookshop.order.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 引用dubbo服务 -->
+	<dubbo:application name="book-shop-portal-web"/>
+	<dubbo:registry protocol="zookeeper" address="192.168.25.123:2181"/>	
+	<!-- 引用服务 -->
+	<dubbo:reference interface="com.bookshop.content.service.ContentService" id="contentService" />
+	<dubbo:reference interface="com.bookshop.sso.service.UserService" id="userService" /> 
+	<dubbo:reference interface="com.bookshop.search.service.SearchService" id="searchService" />
+	<dubbo:reference interface="com.bookshop.service.BookService" id="bookService" />
+	<dubbo:reference interface="com.bookshop.order.service.OrderService" id="orderService" />
+	<dubbo:reference interface="com.bookshop.service.UserService" id="userservice" /> 
+	
+</beans>      

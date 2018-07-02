@@ -1,0 +1,4 @@
+#redis缓存属性
+BOOK_INFO=BOOK_INFO
+#图书数据缓存的时间。默认一天
+BOOK_EXPIRE=86400

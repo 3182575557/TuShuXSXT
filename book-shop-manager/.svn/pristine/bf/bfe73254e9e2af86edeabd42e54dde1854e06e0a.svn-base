@@ -1,0 +1,3 @@
+com\bookshop\service\BookService.class
+com\bookshop\service\UserService.class
+com\bookshop\service\BookCatService.class

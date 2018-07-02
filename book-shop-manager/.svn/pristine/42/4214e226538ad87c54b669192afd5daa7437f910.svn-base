@@ -1,0 +1,11 @@
+com\bookshop\service\impl\BookCatServiceImpl.class
+com\bookshop\service\impl\BookServiceImpl$1.class
+com\bookshop\jedis\JedisClientPool.class
+com\bookshop\jedis\JedisClientCluster.class
+com\bookshop\service\impl\BookServiceImpl$2.class
+com\bookshop\service\impl\BookServiceImpl$3.class
+com\bookshop\service\impl\UserServiceImpl.class
+com\bookshop\jedis\JedisClient.class
+com\bookshop\service\impl\BookServiceImpl$4.class
+com\bookshop\service\impl\BookServiceImpl.class
+com\bookshop\service\impl\BookServiceImpl$5.class

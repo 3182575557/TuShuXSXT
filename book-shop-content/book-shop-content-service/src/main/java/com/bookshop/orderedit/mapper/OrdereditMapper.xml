@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookshop.orderedit.mapper.OrdereditMapper" >
+  <select id="getOrderList" resultType="com.bookshop.common.pojo.OrderPojo">
+  	SELECT 
+		a.order_id orderId,
+		a.user_id userId,
+		a.status,
+		a.shipping_name shippingName,
+		a.payment_type paymentType,
+		a.create_time createTime,
+		a.payment_time paymentTime,
+		a.consign_time consignTime,
+		a.post_fee postFee,
+		b.num,
+		b.book_id bookId,
+		b.total_fee totalFee,
+		c.receiver_mobile receiverMobile,
+		c.receiver_state receiverState,
+		c.receiver_city receiverCity,
+		c.receiver_district receiverDistrict,
+		c.receiver_address receiverAddress,
+		c.receiver_name receiverName
+	FROM
+		tb_order a
+	JOIN tb_order_book b ON a.order_id = b.order_id
+	JOIN tb_order_shipping c ON a.order_id = c.order_id
+  </select>
+  <select id="getOrderByUserId" parameterType="long" resultType="com.bookshop.common.pojo.OrderPojo">
+  	SELECT 
+		a.order_id orderId,
+		a.user_id userId,
+		a.status,
+		a.shipping_name shippingName,
+		a.payment_type paymentType,
+		a.create_time createTime,
+		a.payment_time paymentTime,
+		a.consign_time consignTime,
+		a.post_fee postFee,
+		b.num,
+		b.book_id bookId,
+		b.total_fee totalFee,
+		c.receiver_mobile receiverMobile,
+		c.receiver_state receiverState,
+		c.receiver_city receiverCity,
+		c.receiver_district receiverDistrict,
+		c.receiver_address receiverAddress,
+		c.receiver_name receiverName
+	FROM
+		tb_order a
+	JOIN tb_order_book b ON a.order_id = b.order_id
+	JOIN tb_order_shipping c ON a.order_id = c.order_id
+	WHERE
+		a.user_id = #{userId}
+  </select>
+  
+</mapper>

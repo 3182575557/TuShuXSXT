@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.bookshop</groupId>
+		<artifactId>book-shop-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	 <groupId>com.bookshop</groupId>
+	<artifactId>book-shop-manager</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>com.bookshop</groupId>
+			<artifactId>book-shop-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>book-shop-manager-dao</module>
+		<module>book-shop-manager-pojo</module>
+		<module>book-shop-manager-interface</module>
+		<module>book-shop-manager-service</module>
+	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<path>/</path>
+					<port>8080</port> 
+					<uriEncoding>UTF-8</uriEncoding>
+					<!-- <url>http://192.168.25.143:8080/manager/text</url>
+					<username>tomcat</username>
+					<password>tomcat</password> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

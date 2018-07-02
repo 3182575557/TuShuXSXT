@@ -1,0 +1,9 @@
+com\bookshop\mapper\TbUserMapper.class
+com\bookshop\mapper\TbOrderMapper.class
+com\bookshop\mapper\TbOrderBookMapper.class
+com\bookshop\mapper\TbContentMapper.class
+com\bookshop\mapper\TbBookMapper.class
+com\bookshop\mapper\TbContentCategoryMapper.class
+com\bookshop\mapper\TbBookCatMapper.class
+com\bookshop\mapper\TbOrderShippingMapper.class
+com\bookshop\mapper\TbBookDescMapper.class
